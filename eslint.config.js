@@ -12,6 +12,7 @@ module.exports = defineConfig([
         "error",
         { singleQuote: false, trailingComma: "all" },
       ],
+      "no-unused-vars": "warn",
     },
   },
 ]);
