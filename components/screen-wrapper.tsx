@@ -1,16 +1,25 @@
 import React from "react";
 
-import { SafeAreaView, StatusBar, StyleSheet } from "react-native";
+import {
+  Dimensions,
+  Platform,
+  StatusBar,
+  StyleSheet,
+  View,
+} from "react-native";
 
 import { colors } from "@/constants/theme";
 import { ScreenWrapperProps } from "@/utils/types";
 
+const { height } = Dimensions.get("window");
 const ScreenWrapper = ({ style, children }: ScreenWrapperProps) => {
+  const paddingTop =
+    Platform.OS === "android" ? StatusBar.currentHeight : height * 0.06;
   return (
-    <SafeAreaView style={{ ...styles.container, ...style }}>
+    <View style={{ paddingTop, ...styles.container, ...style }}>
       <StatusBar barStyle="dark-content" />
       {children}
-    </SafeAreaView>
+    </View>
   );
 };
 

@@ -3,6 +3,8 @@ import React from "react";
 import { Gear, User } from "phosphor-react-native";
 import { StyleSheet, View } from "react-native";
 
+import BalanceInfo from "@/components/account-balance";
+import BankCard from "@/components/bank-card";
 import ScreenWrapper from "@/components/screen-wrapper";
 import TypedText from "@/components/typed-text";
 import { colors, spacingX, spacingY } from "@/constants/theme";
@@ -11,6 +13,7 @@ const HomeScreen = () => {
   return (
     <ScreenWrapper>
       <View style={styles.container}>
+        {/* Header */}
         <View style={styles.header}>
           <View style={styles.profileImage}>
             <User size={30} weight="fill" color={colors.neutral500} />
@@ -24,9 +27,17 @@ const HomeScreen = () => {
             </TypedText>
           </View>
           <View style={styles.setting}>
-            <Gear size={30} weight="bold" color={colors.text} />
+            <Gear size={30} color={colors.neutral900} />
           </View>
         </View>
+        <BalanceInfo balance={1000} />
+        {/* Bank Card */}
+        <BankCard
+          lastFourNumber="3456"
+          expiryDate="12/25"
+          type="debit"
+          cardBrand="visa"
+        />
       </View>
     </ScreenWrapper>
   );
@@ -37,7 +48,7 @@ export default HomeScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginTop: spacingY._12,
+    marginVertical: spacingY._12,
   },
   header: {
     flexDirection: "row",
