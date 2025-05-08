@@ -1,17 +1,27 @@
 import { scale, verticalScale } from "@/utils/styling";
 
 export const colors = {
-  primary: "#6772e5",
+  primary: "#6772E5",
   secondary: "#8892A2",
-  text: "#30313d",
+  text: "#30313D",
   textLight: "#6B7385",
   textLighter: "#8892A2",
-  white: "#ffffff",
+  white: "#FFFFFF",
   black: "#000000",
   disabled: "#C1C9D0",
-  success: "#24b47e",
-  warning: "#e39f48",
-  error: "#e25950",
+  success: "#24B47E",
+  warning: "#E39F48",
+  error: "#E25950",
+  neutral50: "#FAFAFA",
+  neutral100: "#F0F0F0",
+  neutral200: "#E5E5E5",
+  neutral300: "#D9D9D9",
+  neutral400: "#CCCCCC",
+  neutral500: "#BFBFBF",
+  neutral600: "#A6A6A6",
+  neutral700: "#8C8C8C",
+  neutral800: "#737373",
+  neutral900: "#595959",
 };
 
 export const spacingX = {

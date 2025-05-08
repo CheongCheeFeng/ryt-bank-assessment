@@ -2,11 +2,12 @@ import React from "react";
 
 import { SafeAreaView, StatusBar, StyleSheet } from "react-native";
 
+import { colors } from "@/constants/theme";
 import { ScreenWrapperProps } from "@/utils/types";
 
 const ScreenWrapper = ({ style, children }: ScreenWrapperProps) => {
   return (
-    <SafeAreaView style={{ flex: 1, ...style }}>
+    <SafeAreaView style={{ ...styles.container, ...style }}>
       <StatusBar barStyle="dark-content" />
       {children}
     </SafeAreaView>
@@ -15,4 +16,9 @@ const ScreenWrapper = ({ style, children }: ScreenWrapperProps) => {
 
 export default ScreenWrapper;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: colors.white,
+  },
+});

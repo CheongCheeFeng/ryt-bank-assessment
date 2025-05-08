@@ -2,16 +2,12 @@ import React from "react";
 
 import { StyleSheet } from "react-native";
 
-import ScreenWrapper from "@/components/screen-wrapper";
-import TypedText from "@/components/typed-text";
 import { colors } from "@/constants/theme";
 
+import HomeScreen from "./home";
+
 const Main = () => {
-  return (
-    <ScreenWrapper style={styles.container}>
-      <TypedText fontWeight="600">Welcome</TypedText>
-    </ScreenWrapper>
-  );
+  return <HomeScreen />;
 };
 
 export default Main;
