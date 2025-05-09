@@ -23,11 +23,17 @@ const categoryIcons: Record<
   shopping: ShoppingBag,
 };
 
-const CategoryIcon = ({ category, style }: CategoryIconProps) => {
+const CategoryIcon = ({
+  category,
+  style,
+  size = 24,
+  weight = "light",
+  color = colors.white,
+}: CategoryIconProps) => {
   const Icon = categoryIcons[category];
   return (
     <View style={style}>
-      <Icon size={26} weight="light" color={colors.white} />
+      <Icon size={size} weight={weight} color={color} />
     </View>
   );
 };

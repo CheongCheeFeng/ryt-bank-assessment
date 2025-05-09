@@ -1,4 +1,5 @@
 import { LinearGradientProps } from "expo-linear-gradient";
+import { IconProps } from "phosphor-react-native";
 import { TextProps, TextStyle, ViewStyle } from "react-native";
 
 export type ScreenWrapperProps = {
@@ -30,7 +31,7 @@ export type BalanceInfoProps = {
 };
 
 export type TransactionCatogory = "general" | "food" | "transport" | "shopping";
-export type TransactionType = "income" | "expense";
+export type TransactionType = "received" | "paid";
 export type TransactionItemProps = {
   category: TransactionCatogory;
   description: string;
@@ -38,10 +39,12 @@ export type TransactionItemProps = {
   amount: number;
   type: TransactionType;
   card?: BankCardProps;
-  paymentProvider?: BankCardType;
 };
 
 export type CategoryIconProps = {
   category: TransactionCatogory;
   style?: ViewStyle;
+  size?: IconProps["size"];
+  weight?: IconProps["weight"];
+  color?: string;
 };

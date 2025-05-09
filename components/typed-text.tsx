@@ -3,7 +3,6 @@ import React from "react";
 import { Text, TextStyle } from "react-native";
 
 import { colors } from "@/constants/theme";
-import { verticalScale } from "@/utils/styling";
 import { TypedTextProps } from "@/utils/types";
 
 const TypedText = ({
@@ -15,7 +14,7 @@ const TypedText = ({
   textProps,
 }: TypedTextProps) => {
   const textStyle: TextStyle = {
-    fontSize: size ? verticalScale(size) : verticalScale(18),
+    fontSize: size,
     color,
     fontWeight,
     ...style,

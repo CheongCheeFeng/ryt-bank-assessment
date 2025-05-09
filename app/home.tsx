@@ -1,5 +1,6 @@
 import React from "react";
 
+import { useRouter } from "expo-router";
 import { Gear, User } from "phosphor-react-native";
 import { Pressable, ScrollView, StyleSheet, View } from "react-native";
 
@@ -12,6 +13,8 @@ import { colors, spacingX, spacingY } from "@/constants/theme";
 import { verticalScale } from "@/utils/styling";
 
 const HomeScreen = () => {
+  const router = useRouter();
+
   return (
     <ScreenWrapper>
       <View style={styles.container}>
@@ -53,7 +56,13 @@ const HomeScreen = () => {
             <TypedText size={18} fontWeight={500} color={colors.text}>
               Recent Transactions
             </TypedText>
-            <Pressable>
+            <View
+              style={{
+                borderBottomColor: "black",
+                borderBottomWidth: StyleSheet.hairlineWidth,
+              }}
+            />
+            <Pressable onPress={() => router.navigate("/transactions-history")}>
               <TypedText
                 size={14}
                 color={colors.darkGray}
@@ -71,8 +80,14 @@ const HomeScreen = () => {
               description: "Walmart",
               date: "2025-05-08T10:00:00Z",
               amount: 50.0,
-              type: "income",
+              type: "paid",
             }}
+            callback={() =>
+              router.push({
+                pathname: "/transactions/[id]",
+                params: { id: "1" },
+              })
+            }
           />
           <TransactionItem
             data={{
@@ -80,7 +95,7 @@ const HomeScreen = () => {
               description: "Walmart",
               date: "2025-05-08T10:00:00Z",
               amount: 50.0,
-              type: "income",
+              type: "received",
             }}
           />
           <TransactionItem
@@ -89,7 +104,7 @@ const HomeScreen = () => {
               description: "Walmart",
               date: "2025-05-08T10:00:00Z",
               amount: 50.0,
-              type: "income",
+              type: "paid",
             }}
           />
           <TransactionItem
@@ -98,7 +113,7 @@ const HomeScreen = () => {
               description: "Walmart",
               date: "2025-05-08T10:00:00Z",
               amount: 50.0,
-              type: "income",
+              type: "paid",
             }}
           />
           <TransactionItem
@@ -107,7 +122,7 @@ const HomeScreen = () => {
               description: "Walmart",
               date: "2025-05-08T10:00:00Z",
               amount: 50.0,
-              type: "income",
+              type: "received",
             }}
           />
         </ScrollView>
@@ -121,7 +136,7 @@ export default HomeScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginVertical: spacingY._12,
+    marginTop: spacingY._12,
   },
   header: {
     flexDirection: "row",

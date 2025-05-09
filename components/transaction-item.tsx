@@ -8,14 +8,15 @@ import { colors, radius, spacingX, spacingY } from "../constants/theme";
 import CategoryIcon from "./category-icon";
 import TypedText from "./typed-text";
 
-const TransactionItem: React.FC<{ data: TransactionItemProps }> = ({
-  data,
-}) => {
+const TransactionItem: React.FC<{
+  data: TransactionItemProps;
+  callback?: () => void;
+}> = ({ data, callback }) => {
   const { category, description, date, amount, type } = data;
-  const amountColor = type === "income" ? colors.mediumGray : colors.error;
+  const amountColor = type === "received" ? colors.mediumGray : colors.error;
 
   return (
-    <TouchableHighlight onPress={() => {}} underlayColor={colors.neutral100}>
+    <TouchableHighlight onPress={callback} underlayColor={colors.neutral100}>
       <View style={styles.container}>
         {/* Placeholder for category icon */}
         <CategoryIcon style={styles.iconPlaceholder} category={category} />
@@ -26,7 +27,7 @@ const TransactionItem: React.FC<{ data: TransactionItemProps }> = ({
         </View>
 
         <TypedText size={12} color={amountColor} fontWeight={500}>
-          {type === "expense" ? "-" : ""}RM{amount.toFixed(2)}
+          {type === "paid" ? "-" : ""}RM{amount.toFixed(2)}
         </TypedText>
       </View>
     </TouchableHighlight>
