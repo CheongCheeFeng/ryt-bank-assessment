@@ -38,8 +38,8 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
     alignItems: "center",
-    paddingVertical: spacingY._12,
-    marginHorizontal: spacingX._12,
+    paddingVertical: spacingY._15,
+    paddingHorizontal: spacingX._12,
   },
   iconPlaceholder: {
     width: 44,

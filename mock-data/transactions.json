@@ -1,0 +1,240 @@
+[
+  {
+    "amount": 137.97,
+    "createdAt": "2025-05-10T00:00:00Z",
+    "id": "txn_0067c66ef17d940db4261f39c51",
+    "type": "paid",
+    "name": "Computer",
+    "category": "shopping",
+    "status": "success",
+    "bankCardTransaction": {
+      "cardSchema": "mastercard",
+      "lastFourDigits": "7010",
+      "type": "credit"
+    }
+  },
+  {
+    "amount": 112.33,
+    "createdAt": "2025-05-10T00:00:00Z",
+    "id": "txn_0067c66ef17d940db4261f39c52",
+    "type": "received",
+    "name": "Ahma"
+  },
+  {
+    "amount": 127.42,
+    "createdAt": "2025-05-10T00:00:00Z",
+    "id": "txn_0067c66ef17d940db4261f39c53",
+    "type": "paid",
+    "name": "Lazada",
+    "category": "shopping",
+    "status": "success",
+    "bankCardTransaction": {
+      "cardSchema": "mastercard",
+      "lastFourDigits": "4614",
+      "type": "debit"
+    }
+  },
+  {
+    "amount": 147.8,
+    "createdAt": "2025-05-10T00:00:00Z",
+    "id": "txn_0167c66ef17d940db4261f39c50",
+    "type": "received",
+    "name": "Sam"
+  },
+  {
+    "amount": 194.63,
+    "createdAt": "2025-05-10T00:00:00Z",
+    "id": "txn_0167c66ef17d940db4261f39c51",
+    "type": "paid",
+    "name": "Burger King",
+    "category": "food",
+    "status": "pending",
+    "bankCardTransaction": {
+      "cardSchema": "visa",
+      "lastFourDigits": "7010",
+      "type": "credit"
+    }
+  },
+  {
+    "amount": 67.82,
+    "createdAt": "2025-05-10T00:00:00Z",
+    "id": "txn_0167c66ef17d940db4261f39c58",
+    "type": "received",
+    "name": "Jay"
+  },
+  {
+    "amount": 123.65,
+    "createdAt": "2025-05-09T00:00:00Z",
+    "id": "txn_0067c66ef17d940db4261f39c55",
+    "type": "received",
+    "name": "Ahmaas"
+  },
+  {
+    "amount": 84.65,
+    "createdAt": "2025-05-09T00:00:00Z",
+    "id": "txn_0067c66ef17d940db4261f39c59",
+    "type": "paid",
+    "name": "Starbucks",
+    "category": "food",
+    "status": "success",
+    "bankCardTransaction": {
+      "cardSchema": "mastercard",
+      "lastFourDigits": "4614",
+      "type": "debit"
+    }
+  },
+  {
+    "amount": 131.54,
+    "createdAt": "2025-05-09T00:00:00Z",
+    "id": "txn_0167c66b42ef17d66d94039c57",
+    "type": "received",
+    "name": "Ahma Payback"
+  },
+  {
+    "amount": 106.89,
+    "createdAt": "2025-05-08T00:00:00Z",
+    "id": "txn_0167cf17d966e40db4261f39c52",
+    "type": "paid",
+    "name": "Dunkin Donuts",
+    "category": "food",
+    "status": "pending",
+    "bankCardTransaction": {
+      "cardSchema": "mastercard",
+      "lastFourDigits": "7010",
+      "type": "credit"
+    }
+  },
+  {
+    "amount": 159.85,
+    "createdAt": "2025-05-08T00:00:00Z",
+    "id": "txn_0167c66ef17d61f39c940db4254",
+    "type": "paid",
+    "name": "Car Engine Oil",
+    "category": "transport",
+    "status": "success",
+    "bankCardTransaction": {
+      "cardSchema": "mastercard",
+      "lastFourDigits": "2231",
+      "type": "debit"
+    }
+  },
+  {
+    "amount": 47.63,
+    "createdAt": "2025-05-07T00:00:00Z",
+    "id": "txn_0067c261f36ef640db417d99c57",
+    "type": "paid",
+    "name": "Zalora",
+    "category": "shopping",
+    "status": "success",
+    "bankCardTransaction": {
+      "cardSchema": "visa",
+      "lastFourDigits": "7010",
+      "type": "credit"
+    }
+  },
+  {
+    "amount": 27.99,
+    "createdAt": "2025-05-07T00:00:00Z",
+    "id": "txn_0167c667d4261fef1940db39c53",
+    "type": "paid",
+    "name": "AEON Big",
+    "category": "general",
+    "status": "success",
+    "bankCardTransaction": {
+      "cardSchema": "visa",
+      "lastFourDigits": "7010",
+      "type": "credit"
+    }
+  },
+  {
+    "amount": 87.14,
+    "createdAt": "2025-05-07T00:00:00Z",
+    "id": "txn_01640db4261f39c7c66ef17d956",
+    "type": "paid",
+    "name": "Pizza Hut",
+    "category": "food",
+    "status": "success",
+    "bankCardTransaction": {
+      "cardSchema": "visa",
+      "lastFourDigits": "7010",
+      "type": "credit"
+    }
+  },
+  {
+    "amount": 76.95,
+    "createdAt": "2025-05-07T00:00:00Z",
+    "id": "txn_01f17d940db4261f67c66e39c59",
+    "type": "paid",
+    "name": "Starbucks",
+    "category": "food",
+    "status": "success",
+    "bankCardTransaction": {
+      "cardSchema": "visa",
+      "lastFourDigits": "34614",
+      "type": "debit"
+    }
+  },
+  {
+    "amount": 55.61,
+    "createdAt": "2025-05-07T00:00:00Z",
+    "id": "txn_0267c66ef17d940db4261f39c50",
+    "type": "received",
+    "name": "Ahmald's"
+  },
+  {
+    "amount": 85.94,
+    "createdAt": "2025-05-06T00:00:00Z",
+    "id": "txn_0067c66ef17d940db4261f39c54",
+    "type": "paid",
+    "name": "Zoom subscription",
+    "category": "general",
+    "status": "success",
+    "bankCardTransaction": {
+      "cardSchema": "visa",
+      "lastFourDigits": "7010",
+      "type": "credit"
+    }
+  },
+  {
+    "amount": 13.4,
+    "createdAt": "2025-05-06T00:00:00Z",
+    "id": "txn_0067c66ef17d940db4261f39c56",
+    "type": "paid",
+    "name": "Starbucks",
+    "category": "transport",
+    "status": "success",
+    "bankCardTransaction": {
+      "cardSchema": "visa",
+      "lastFourDigits": "3614",
+      "type": "debit"
+    }
+  },
+  {
+    "amount": 59.05,
+    "createdAt": "2025-05-06T00:00:00Z",
+    "id": "txn_0067c66ef17d940db4261f39c58",
+    "type": "paid",
+    "name": "Bookstore",
+    "category": "shopping",
+    "status": "success",
+    "bankCardTransaction": {
+      "cardSchema": "mastercard",
+      "lastFourDigits": "4214",
+      "type": "credit"
+    }
+  },
+  {
+    "amount": 15.28,
+    "createdAt": "2025-05-06T00:00:00Z",
+    "id": "txn_0167c66ef17d940db4261f39c55",
+    "type": "paid",
+    "name": "KFC",
+    "category": "food",
+    "status": "success",
+    "bankCardTransaction": {
+      "cardSchema": "mastercard",
+      "lastFourDigits": "4614",
+      "type": "debit"
+    }
+  }
+]

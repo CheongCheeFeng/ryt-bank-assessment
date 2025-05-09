@@ -12,12 +12,12 @@ import { colors, radius, spacingX, spacingY } from "../constants/theme";
 const { width } = Dimensions.get("window");
 
 const BankCard: React.FC<BankCardProps> = ({
-  lastFourNumber,
+  lastFourDigits,
   expiryDate,
   cardBrand: paymentProvider,
   backgroundColor,
 }) => {
-  const formattedCardNumber = `************${lastFourNumber}`
+  const formattedCardNumber = `************${lastFourDigits}`
     .match(/.{1,4}/g)
     ?.join(" ");
 

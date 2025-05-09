@@ -30,7 +30,7 @@ const CategoryIcon = ({
   weight = "light",
   color = colors.white,
 }: CategoryIconProps) => {
-  const Icon = categoryIcons[category];
+  const Icon = categoryIcons[category as keyof typeof categoryIcons] || Receipt;
   return (
     <View style={style}>
       <Icon size={size} weight={weight} color={color} />

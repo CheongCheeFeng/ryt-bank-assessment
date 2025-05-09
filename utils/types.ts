@@ -2,6 +2,8 @@ import { LinearGradientProps } from "expo-linear-gradient";
 import { IconProps } from "phosphor-react-native";
 import { TextProps, TextStyle, ViewStyle } from "react-native";
 
+type StrictOmit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
+
 export type ScreenWrapperProps = {
   style?: ViewStyle;
   children: React.ReactNode;
@@ -17,12 +19,12 @@ export type TypedTextProps = {
 };
 
 export type BankCardType = "credit" | "debit";
-export type BankCardBrand = "visa" | "mastercard";
+export type BankCardSchema = "visa" | "mastercard";
 export type BankCardProps = {
-  lastFourNumber: string;
+  lastFourDigits: string;
   expiryDate: string;
   type: BankCardType;
-  cardBrand: BankCardBrand;
+  cardBrand: BankCardSchema;
   backgroundColor?: LinearGradientProps["colors"];
 };
 
@@ -30,21 +32,56 @@ export type BalanceInfoProps = {
   balance: number;
 };
 
-export type TransactionCatogory = "general" | "food" | "transport" | "shopping";
+export type TransactionCatogory =
+  | "general"
+  | "food"
+  | "transport"
+  | "shopping"
+  | string;
 export type TransactionType = "received" | "paid";
 export type TransactionItemProps = {
-  category: TransactionCatogory;
+  category?: TransactionCatogory;
   description: string;
   date: Date | string;
   amount: number;
   type: TransactionType;
-  card?: BankCardProps;
 };
 
 export type CategoryIconProps = {
-  category: TransactionCatogory;
+  category?: TransactionCatogory;
   style?: ViewStyle;
   size?: IconProps["size"];
   weight?: IconProps["weight"];
   color?: string;
+};
+
+export type TransactionStatus = "success" | "pending";
+
+export type BankCardTransaction = {
+  cardSchema: BankCardSchema;
+  lastFourDigits: string;
+  type: BankCardType;
+};
+
+export type Transaction = {
+  amount: number;
+  createdAt: string;
+  id: string;
+  type: TransactionType;
+  name: string;
+  status?: TransactionStatus;
+  category?: TransactionCatogory;
+  bankCardTransaction?: BankCardTransaction;
+};
+
+export type GroupedTransactions = {
+  day: string;
+  data: Transaction[];
+};
+
+export type PaymentDetailsCardProps = StrictOmit<
+  BankCardTransaction,
+  "type"
+> & {
+  style?: ViewStyle;
 };

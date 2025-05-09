@@ -1,67 +1,111 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 import { useLocalSearchParams, useNavigation } from "expo-router";
-import { ArrowCircleUpLeft } from "phosphor-react-native";
-import { Image, ScrollView, StyleSheet, Text, View } from "react-native";
+import { ArrowCircleDownRight, ArrowCircleUpLeft } from "phosphor-react-native";
+import { ScrollView, StyleSheet, Text, View } from "react-native";
 
 import CategoryIcon from "@/components/category-icon";
+import PaymentDetailsCard from "@/components/payment-details-card";
 import TypedText from "@/components/typed-text";
 import { colors, radius } from "@/constants/theme";
+import { TransactionService } from "@/services/transaction.service";
+import { formatDate } from "@/utils/helper";
+import { Transaction } from "@/utils/types";
 
 export default function TransactionDetailsScreen() {
-  const { id } = useLocalSearchParams();
+  const { id } = useLocalSearchParams<{ id: string }>();
+
   const navigation = useNavigation();
+  const [transactionDetails, setTransactionDetails] =
+    useState<Transaction | null>(null);
 
   useEffect(() => {
     navigation.setOptions({
       headerShown: true,
-      title: `Transaction #${id}`,
+      title: `Transaction`,
     });
   }, [navigation, id]);
+
+  useEffect(() => {
+    const transaction = TransactionService.getTransactionById(id);
+    setTransactionDetails(transaction);
+    console.log(TransactionService.getTransactionGroupByDate());
+  }, [transactionDetails, id]);
+
+  if (!transactionDetails) {
+    return (
+      <View style={styles.container}>
+        <Text style={styles.label}>Loading...</Text>
+      </View>
+    );
+  }
+
+  const {
+    amount,
+    createdAt,
+    type: transactionType,
+    name,
+    status,
+    category,
+    bankCardTransaction,
+  } = transactionDetails;
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <View style={styles.header}>
-        <TypedText size={32}>Paid</TypedText>
-        <ArrowCircleUpLeft size={90} weight="thin" color={colors.error} />
-        <Text style={styles.amount}>RM 9.70</Text>
+        <TypedText size={32} color={colors.darkGray} style={styles.type}>
+          {transactionType}
+        </TypedText>
+        {transactionType === "paid" ? (
+          <ArrowCircleUpLeft size={90} weight="thin" color={colors.error} />
+        ) : (
+          <ArrowCircleDownRight
+            size={90}
+            weight="thin"
+            color={colors.success}
+          />
+        )}
+        <Text style={styles.amount}>RM {amount}</Text>
         <View style={styles.tag}>
           <CategoryIcon
-            category="general"
+            category={category}
             size={18}
             weight="fill"
             color={colors.white}
           />
-          <Text style={styles.tagText}>General</Text>
+          <Text style={styles.tagText}>{category ? category : "Others"}</Text>
         </View>
       </View>
 
       <View style={styles.card}>
         <Text style={styles.cardTitle}>Transaction Details</Text>
-        {[
-          ["Pay to", "ABC Sdn Bhd"],
-          ["Transaction date", "19 March 2025 at 03:31"],
-          ["Transaction ID", "#3201785561"],
-          ["Status", "Completed"],
-        ].map(([label, value], index) => (
-          <View key={index} style={styles.detailRow}>
-            <Text style={styles.label}>{label}</Text>
-            <Text style={styles.value}>{value}</Text>
+
+        <View style={styles.detailRow}>
+          <Text style={styles.label}>
+            {transactionType === "paid" ? "Paid to" : "Receive from"}
+          </Text>
+          <Text style={styles.value}>{name}</Text>
+        </View>
+        <View style={styles.detailRow}>
+          <Text style={styles.label}>Date/ Time</Text>
+          <Text style={styles.value}>{formatDate(createdAt)}</Text>
+        </View>
+
+        {status && (
+          <View style={styles.detailRow}>
+            <Text style={styles.label}>Status</Text>
+            <Text style={styles.value}>{status}</Text>
           </View>
-        ))}
+        )}
       </View>
 
-      <View style={{ ...styles.card, marginTop: 20 }}>
-        <Text style={styles.cardTitle}>Payment details</Text>
-        <View style={styles.paymentDetailsRow}>
-          <Image
-            source={require("../../assets/images/visa-card.png")}
-            style={styles.paymentImage}
-            resizeMode="contain"
-          />
-          <TypedText style={styles.paymentDetails}>{`• • • •  3125`}</TypedText>
-        </View>
-      </View>
+      {bankCardTransaction && (
+        <PaymentDetailsCard
+          lastFourDigits={bankCardTransaction.lastFourDigits}
+          cardSchema={bankCardTransaction.cardSchema}
+          style={{ marginTop: 20 }}
+        />
+      )}
     </ScrollView>
   );
 }
@@ -74,6 +118,10 @@ const styles = StyleSheet.create({
   header: {
     alignItems: "center",
     marginBottom: 30,
+  },
+  type: {
+    textTransform: "capitalize",
+    fontFamily: "Inter-Medium",
   },
   amount: {
     fontSize: 32,
@@ -96,6 +144,7 @@ const styles = StyleSheet.create({
     color: colors.white,
     fontSize: 12,
     fontWeight: "500",
+    textTransform: "capitalize",
   },
   card: {
     backgroundColor: "white",
@@ -128,20 +177,5 @@ const styles = StyleSheet.create({
   value: {
     color: colors.text,
     fontSize: 14,
-  },
-  paymentDetailsRow: {
-    flexDirection: "row",
-    alignItems: "center",
-  },
-  paymentImage: {
-    width: 48,
-    height: 30,
-    marginRight: 10,
-  },
-  paymentDetails: {
-    fontSize: 16,
-    color: colors.text,
-    fontWeight: "800",
-    fontFamily: "Inter-Medium",
   },
 });
