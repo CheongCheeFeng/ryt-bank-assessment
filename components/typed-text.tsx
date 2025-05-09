@@ -1,6 +1,6 @@
 import React from "react";
 
-import { StyleSheet, Text, TextStyle } from "react-native";
+import { Text, TextStyle } from "react-native";
 
 import { colors } from "@/constants/theme";
 import { verticalScale } from "@/utils/styling";
@@ -8,7 +8,7 @@ import { TypedTextProps } from "@/utils/types";
 
 const TypedText = ({
   size,
-  color = colors.text,
+  color = colors.mediumGray,
   fontWeight = "400",
   children,
   style,
@@ -28,5 +28,3 @@ const TypedText = ({
 };
 
 export default TypedText;
-
-const styles = StyleSheet.create({});

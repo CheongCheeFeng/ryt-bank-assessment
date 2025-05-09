@@ -24,3 +24,24 @@ export type BankCardProps = {
   cardBrand: BankCardBrand;
   backgroundColor?: LinearGradientProps["colors"];
 };
+
+export type BalanceInfoProps = {
+  balance: number;
+};
+
+export type TransactionCatogory = "general" | "food" | "transport" | "shopping";
+export type TransactionType = "income" | "expense";
+export type TransactionItemProps = {
+  category: TransactionCatogory;
+  description: string;
+  date: Date | string;
+  amount: number;
+  type: TransactionType;
+  card?: BankCardProps;
+  paymentProvider?: BankCardType;
+};
+
+export type CategoryIconProps = {
+  category: TransactionCatogory;
+  style?: ViewStyle;
+};

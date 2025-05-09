@@ -6,12 +6,18 @@ export const colors = {
   text: "#30313D",
   textLight: "#6B7385",
   textLighter: "#8892A2",
+
   white: "#FFFFFF",
   black: "#000000",
+  darkGray: "#2D333A",
+  mediumGray: "#525B65",
+  lightGray: "#788494",
+
   disabled: "#C1C9D0",
   success: "#24B47E",
   warning: "#E39F48",
   error: "#E25950",
+
   neutral50: "#FAFAFA",
   neutral100: "#F0F0F0",
   neutral200: "#E5E5E5",
@@ -22,6 +28,8 @@ export const colors = {
   neutral700: "#8C8C8C",
   neutral800: "#737373",
   neutral900: "#595959",
+
+  lightPurple: "#828BEA",
 };
 
 export const spacingX = {

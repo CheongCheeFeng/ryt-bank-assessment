@@ -1,13 +1,15 @@
 import React from "react";
 
 import { Gear, User } from "phosphor-react-native";
-import { StyleSheet, View } from "react-native";
+import { Pressable, ScrollView, StyleSheet, View } from "react-native";
 
 import BalanceInfo from "@/components/account-balance";
 import BankCard from "@/components/bank-card";
 import ScreenWrapper from "@/components/screen-wrapper";
+import TransactionItem from "@/components/transaction-item";
 import TypedText from "@/components/typed-text";
 import { colors, spacingX, spacingY } from "@/constants/theme";
+import { verticalScale } from "@/utils/styling";
 
 const HomeScreen = () => {
   return (
@@ -19,10 +21,10 @@ const HomeScreen = () => {
             <User size={30} weight="fill" color={colors.neutral500} />
           </View>
           <View>
-            <TypedText size={12} color={colors.text}>
+            <TypedText size={14} color={colors.text}>
               Hello,
             </TypedText>
-            <TypedText size={14} fontWeight={500} color={colors.text}>
+            <TypedText size={16} fontWeight={500} color={colors.text}>
               Alex Wong
             </TypedText>
           </View>
@@ -30,14 +32,85 @@ const HomeScreen = () => {
             <Gear size={30} color={colors.neutral900} />
           </View>
         </View>
-        <BalanceInfo balance={1000} />
-        {/* Bank Card */}
-        <BankCard
-          lastFourNumber="3456"
-          expiryDate="12/25"
-          type="debit"
-          cardBrand="visa"
-        />
+
+        <ScrollView
+          contentContainerStyle={{
+            flexGrow: 1,
+            paddingBottom: verticalScale(80),
+          }}
+          showsVerticalScrollIndicator={false}
+        >
+          <BalanceInfo balance={1000} />
+          {/* Bank Card */}
+          <BankCard
+            lastFourNumber="3456"
+            expiryDate="12/25"
+            type="debit"
+            cardBrand="visa"
+          />
+
+          <View style={styles.transactionTitle}>
+            <TypedText size={18} fontWeight={500} color={colors.text}>
+              Recent Transactions
+            </TypedText>
+            <Pressable>
+              <TypedText
+                size={14}
+                color={colors.darkGray}
+                fontWeight={500}
+                style={styles.transactionViewAll}
+              >
+                View all
+              </TypedText>
+            </Pressable>
+          </View>
+          {/* Transaction Items */}
+          <TransactionItem
+            data={{
+              category: "shopping",
+              description: "Walmart",
+              date: "2025-05-08T10:00:00Z",
+              amount: 50.0,
+              type: "income",
+            }}
+          />
+          <TransactionItem
+            data={{
+              category: "food",
+              description: "Walmart",
+              date: "2025-05-08T10:00:00Z",
+              amount: 50.0,
+              type: "income",
+            }}
+          />
+          <TransactionItem
+            data={{
+              category: "transport",
+              description: "Walmart",
+              date: "2025-05-08T10:00:00Z",
+              amount: 50.0,
+              type: "income",
+            }}
+          />
+          <TransactionItem
+            data={{
+              category: "general",
+              description: "Walmart",
+              date: "2025-05-08T10:00:00Z",
+              amount: 50.0,
+              type: "income",
+            }}
+          />
+          <TransactionItem
+            data={{
+              category: "general",
+              description: "Walmart",
+              date: "2025-05-08T10:00:00Z",
+              amount: 50.0,
+              type: "income",
+            }}
+          />
+        </ScrollView>
       </View>
     </ScreenWrapper>
   );
@@ -73,5 +146,17 @@ const styles = StyleSheet.create({
     alignItems: "center",
     marginLeft: "auto",
     marginRight: spacingX._12,
+  },
+  transactionTitle: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    marginTop: spacingY._20,
+    marginBottom: spacingY._10,
+    marginHorizontal: spacingX._12,
+  },
+  transactionViewAll: {
+    textDecorationLine: "underline",
+    textDecorationStyle: "solid",
   },
 });
