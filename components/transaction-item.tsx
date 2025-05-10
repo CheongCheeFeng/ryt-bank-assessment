@@ -13,11 +13,12 @@ import TypedText from "./typed-text";
 const TransactionItem: React.FC<{
   data: TransactionItemProps;
   router: Router;
-}> = ({ data, router }) => {
+  showAmount?: boolean;
+}> = ({ data, router, showAmount }) => {
   const { authenticate } = useBiometricAuth();
   const { id, category, description, date, amount, type } = data;
-  const amountColor = type === "received" ? colors.mediumGray : colors.error;
-
+  const amountColor =
+    showAmount && type === "paid" ? colors.error : colors.mediumGray;
   return (
     <TouchableHighlight
       onPress={() =>
@@ -41,7 +42,9 @@ const TransactionItem: React.FC<{
 
         {amount && (
           <TypedText size={12} color={amountColor} fontWeight={500}>
-            {type === "paid" ? "-" : ""}RM{amount.toFixed(2)}
+            {showAmount
+              ? `${type === "paid" ? "-" : ""}RM ${amount.toFixed(2)}`
+              : "RM **.**"}
           </TypedText>
         )}
       </View>
