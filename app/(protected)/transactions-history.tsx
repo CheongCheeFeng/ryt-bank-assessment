@@ -1,8 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 
 import { useRouter } from "expo-router";
 import { Eye, EyeSlash } from "phosphor-react-native";
-import { Pressable, SectionList, StyleSheet, Text, View } from "react-native";
+import {
+  Pressable,
+  RefreshControl,
+  SectionList,
+  StyleSheet,
+  Text,
+  View,
+} from "react-native";
 
 import TransactionItem from "@/components/transaction-item";
 import { colors } from "@/constants/theme";
@@ -41,9 +48,22 @@ const TransactionHistoryScreen = () => {
       setShowAmount((prev) => !prev);
     }
   };
+
+  const [refreshing, setRefreshing] = React.useState(false);
+  const onRefresh = useCallback(() => {
+    setRefreshing(true);
+    setTimeout(() => {
+      fetchRecentTransactions();
+      setRefreshing(false);
+    }, 2000);
+  }, []);
+
   return (
     <View style={styles.container}>
       <SectionList
+        refreshControl={
+          <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+        }
         sections={recentTransactions}
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => (
