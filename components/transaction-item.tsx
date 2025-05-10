@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
     width: 44,
     height: 44,
     borderRadius: radius._30,
-    backgroundColor: colors.lightPurple, // Placeholder color
+    backgroundColor: colors.lightPurple,
     marginRight: spacingX._12,
     justifyContent: "center",
     alignItems: "center",

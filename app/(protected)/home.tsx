@@ -166,6 +166,6 @@ const styles = StyleSheet.create({
   },
   line: {
     height: 1,
-    backgroundColor: colors.neutral100, // You can change the color
+    backgroundColor: colors.neutral100,
   },
 });

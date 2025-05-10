@@ -2,14 +2,18 @@ import React from "react";
 
 import { Redirect, Stack } from "expo-router";
 
-const isLoggedIn = true;
+import { useAuth } from "@/authContext";
+
 const ProtectedLayout = () => {
+  const { isLoggedIn, isFinishLoading } = useAuth();
+
+  if (!isFinishLoading) return null;
   if (!isLoggedIn) return <Redirect href="/login" />;
   return (
     <Stack screenOptions={{ headerShown: false }}>
       <Stack.Screen name="home" />
-      <Stack.Screen name="transaction" />
-      <Stack.Screen name="transaction-history" />
+      <Stack.Screen name="transactions/[id]" />
+      <Stack.Screen name="transactions-history" />
     </Stack>
   );
 };

@@ -9,7 +9,10 @@
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "infoPlist": {
+        "NSFaceIDUsageDescription": "Face ID is used to unlock the app."
+      }
     },
     "android": {
       "adaptiveIcon": {
@@ -41,6 +44,12 @@
             "./assets/fonts/Inter-Regular.ttf",
             "./assets/fonts/Inter-Medium.ttf"
           ]
+        }
+      ],
+      [
+        "expo-local-authentication",
+        {
+          "faceIDPermission": "Allow Ryt Assessment App to use Face ID."
         }
       ]
     ],
