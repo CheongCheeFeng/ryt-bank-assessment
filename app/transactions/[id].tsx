@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-import { useLocalSearchParams, useNavigation } from "expo-router";
+import { useLocalSearchParams } from "expo-router";
 import { ArrowCircleDownRight, ArrowCircleUpLeft } from "phosphor-react-native";
 import { ScrollView, StyleSheet, Text, View } from "react-native";
 
@@ -8,28 +8,20 @@ import CategoryIcon from "@/components/category-icon";
 import PaymentDetailsCard from "@/components/payment-details-card";
 import TypedText from "@/components/typed-text";
 import { colors, radius } from "@/constants/theme";
+import { useUpdateHeaderOption } from "@/hooks/useUpdateHeaderOption";
 import { TransactionService } from "@/services/transaction.service";
 import { formatDate } from "@/utils/helper";
 import { Transaction } from "@/utils/types";
 
 export default function TransactionDetailsScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
-
-  const navigation = useNavigation();
+  useUpdateHeaderOption("Transaction Details");
   const [transactionDetails, setTransactionDetails] =
     useState<Transaction | null>(null);
 
   useEffect(() => {
-    navigation.setOptions({
-      headerShown: true,
-      title: `Transaction`,
-    });
-  }, [navigation, id]);
-
-  useEffect(() => {
     const transaction = TransactionService.getTransactionById(id);
     setTransactionDetails(transaction);
-    console.log(TransactionService.getTransactionGroupByDate());
   }, [transactionDetails, id]);
 
   if (!transactionDetails) {
@@ -47,7 +39,7 @@ export default function TransactionDetailsScreen() {
     name,
     status,
     category,
-    bankCardTransaction,
+    bankCardTransaction: card,
   } = transactionDetails;
 
   return (
@@ -94,15 +86,22 @@ export default function TransactionDetailsScreen() {
         {status && (
           <View style={styles.detailRow}>
             <Text style={styles.label}>Status</Text>
-            <Text style={styles.value}>{status}</Text>
+            <Text style={styles.value}>{status.toLocaleUpperCase()}</Text>
+          </View>
+        )}
+
+        {card && (
+          <View style={styles.detailRow}>
+            <Text style={styles.label}>Card Type</Text>
+            <Text style={styles.value}>{card.type.toLocaleUpperCase()}</Text>
           </View>
         )}
       </View>
 
-      {bankCardTransaction && (
+      {card && (
         <PaymentDetailsCard
-          lastFourDigits={bankCardTransaction.lastFourDigits}
-          cardSchema={bankCardTransaction.cardSchema}
+          lastFourDigits={card.lastFourDigits}
+          cardSchema={card.cardSchema}
           style={{ marginTop: 20 }}
         />
       )}
