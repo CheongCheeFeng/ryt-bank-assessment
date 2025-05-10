@@ -2,7 +2,7 @@ import { useEffect } from "react";
 
 import { AppState, AppStateStatus } from "react-native";
 
-import { useAuth } from "@/authContext";
+import { useAuth } from "@/utils/authContext";
 
 const AppStateHandler = () => {
   const { logOut } = useAuth();

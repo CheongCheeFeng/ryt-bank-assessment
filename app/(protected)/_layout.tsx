@@ -2,7 +2,7 @@ import React from "react";
 
 import { Redirect, Stack } from "expo-router";
 
-import { useAuth } from "@/authContext";
+import { useAuth } from "@/utils/authContext";
 
 const ProtectedLayout = () => {
   const { isLoggedIn, isFinishLoading } = useAuth();

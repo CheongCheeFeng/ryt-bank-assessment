@@ -2,9 +2,9 @@ import React from "react";
 
 import { StyleSheet, Text, View } from "react-native";
 
-import { useAuth } from "@/authContext";
 import { Button } from "@/components/button";
 import { useBiometricAuth } from "@/hooks/useBiometricAuth";
+import { useAuth } from "@/utils/authContext";
 
 const Login = () => {
   const { logIn } = useAuth();
