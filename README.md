@@ -1,51 +1,56 @@
-# Welcome to your Expo app 👋
+# RYT Bank Assessment
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+Welcome to the **RYT Bank Assessment** project! This application is a demonstration of a banking app interface with some key features implemented for assessment purposes.
 
-## Get started
+---
 
-#### Android
+## Key Notes
 
-Android previews are defined as a `workspace.onStart` hook and started as a vscode task when the workspace is opened/started.
+1. **UI Elements**:
 
-Note, if you can't find the task, either:
-- Rebuild the environment (using command palette: `IDX: Rebuild Environment`), or
-- Run `npm run android -- --tunnel` command manually run android and see the output in your terminal. The device should pick up this new command and switch to start displaying the output from it.
+   - Some UI components in the app are designed for **visual purposes only** and are **not clickable** or functional. These elements are included to showcase the design and layout of the application.
 
-In the output of this command/task, you'll find options to open the app in a
+2. **Transaction Data**:
+   - The transaction data displayed in the app is sourced from **local mock data** (`transactions.json`).
+   - There is **no network fetching** or API integration for transaction data in this project.
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+---
 
-You'll also find options to open the app's developer menu, reload the app, and more.
+## Features
 
-#### Web
+- **Login Screen**:
+  - Includes biometric authentication for secure login.
+- **Transaction History**:
+  - Displays grouped transactions by date.
+  - Allows navigation to transaction details (for functional items).
+- **Floating Action Button**:
+  - Positioned at the bottom of the transaction history screen for potential future actions.
 
-Web previews will be started and managred automatically. Use the toolbar to manually refresh.
+---
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+## How to Run
 
-## Get a fresh project
+1. Clone the repository:
+   ```bash
+   git clone git@github.com:CheongCheeFeng/ryt-bank-assessment.git
+   ```
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Start the development server:
+   ```bash
+   npm start
+   ```
+4. Open the app in an emulator or on a physical device using Expo Go.
 
-When you're ready, run:
+---
 
-```bash
-npm run reset-project
-```
+## Notes for Reviewers
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+- This project is a **prototype** and does not include backend integration.
+- The focus is on UI/UX design and basic functionality.
 
-## Learn more
+---
 
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+Feel free to explore the app and provide feedback! 😊
