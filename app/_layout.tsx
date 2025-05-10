@@ -4,7 +4,11 @@ import { Stack } from "expo-router";
 import { StyleSheet } from "react-native";
 
 const RootLayout = () => {
-  return <Stack screenOptions={{ headerShown: false }}></Stack>;
+  return (
+    <Stack screenOptions={{ headerShown: false }}>
+      <Stack.Screen name="(protected)" />
+    </Stack>
+  );
 };
 
 export default RootLayout;
