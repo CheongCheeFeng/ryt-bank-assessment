@@ -10,12 +10,14 @@ import ScreenWrapper from "@/components/screen-wrapper";
 import TransactionItem from "@/components/transaction-item";
 import TypedText from "@/components/typed-text";
 import { colors, spacingX, spacingY } from "@/constants/theme";
+import { useBiometricAuth } from "@/hooks/useBiometricAuth";
 import { TransactionService } from "@/services/transaction.service";
 import { verticalScale } from "@/utils/styling";
 import { Transaction } from "@/utils/types";
 
 const HomeScreen = () => {
   const router = useRouter();
+  const { authenticate } = useBiometricAuth();
 
   const [recentTransactions, setRecentTransactions] = useState<Transaction[]>(
     [],
@@ -79,7 +81,9 @@ const HomeScreen = () => {
                 }}
               />
               <Pressable
-                onPress={() => router.navigate("/transactions-history")}
+                onPress={() =>
+                  authenticate(() => router.navigate("/transactions-history"))
+                }
               >
                 <TypedText
                   size={14}
@@ -99,15 +103,10 @@ const HomeScreen = () => {
                     category: item.category,
                     description: item.name,
                     date: item.createdAt,
-                    amount: item.amount,
                     type: item.type,
+                    id: item.id,
                   }}
-                  callback={() =>
-                    router.push({
-                      pathname: "/transactions/[id]",
-                      params: { id: item.id },
-                    })
-                  }
+                  router={router}
                 />
                 {index !== recentTransactions.length - 1 && (
                   <View style={styles.line} />

@@ -1,7 +1,9 @@
 import React from "react";
 
+import { Router } from "expo-router";
 import { StyleSheet, TouchableHighlight, View } from "react-native";
 
+import { useBiometricAuth } from "@/hooks/useBiometricAuth";
 import { TransactionItemProps } from "@/utils/types";
 
 import { colors, radius, spacingX, spacingY } from "../constants/theme";
@@ -10,13 +12,24 @@ import TypedText from "./typed-text";
 
 const TransactionItem: React.FC<{
   data: TransactionItemProps;
-  callback?: () => void;
-}> = ({ data, callback }) => {
-  const { category, description, date, amount, type } = data;
+  router: Router;
+}> = ({ data, router }) => {
+  const { authenticate } = useBiometricAuth();
+  const { id, category, description, date, amount, type } = data;
   const amountColor = type === "received" ? colors.mediumGray : colors.error;
 
   return (
-    <TouchableHighlight onPress={callback} underlayColor={colors.neutral100}>
+    <TouchableHighlight
+      onPress={() =>
+        authenticate(() =>
+          router.push({
+            pathname: "/transactions/[id]",
+            params: { id },
+          }),
+        )
+      }
+      underlayColor={colors.neutral100}
+    >
       <View style={styles.container}>
         {/* Placeholder for category icon */}
         <CategoryIcon style={styles.iconPlaceholder} category={category} />
@@ -26,9 +39,11 @@ const TransactionItem: React.FC<{
           <TypedText style={styles.timeText}>{date}</TypedText>
         </View>
 
-        <TypedText size={12} color={amountColor} fontWeight={500}>
-          {type === "paid" ? "-" : ""}RM{amount.toFixed(2)}
-        </TypedText>
+        {amount && (
+          <TypedText size={12} color={amountColor} fontWeight={500}>
+            {type === "paid" ? "-" : ""}RM{amount.toFixed(2)}
+          </TypedText>
+        )}
       </View>
     </TouchableHighlight>
   );

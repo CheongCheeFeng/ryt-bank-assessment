@@ -40,10 +40,11 @@ export type TransactionCatogory =
   | string;
 export type TransactionType = "received" | "paid";
 export type TransactionItemProps = {
+  id: string;
   category?: TransactionCatogory;
   description: string;
   date: Date | string;
-  amount: number;
+  amount?: number;
   type: TransactionType;
 };
 

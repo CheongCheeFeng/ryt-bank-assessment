@@ -33,18 +33,14 @@ const TransactionHistoryScreen = () => {
         <View style={{ backgroundColor: "white" }}>
           <TransactionItem
             data={{
+              id: item.id,
               category: item.category,
               description: item.name,
               date: item.createdAt,
               amount: item.amount,
               type: item.type,
             }}
-            callback={() =>
-              router.push({
-                pathname: "/transactions/[id]",
-                params: { id: item.id },
-              })
-            }
+            router={router}
           />
         </View>
       )}
